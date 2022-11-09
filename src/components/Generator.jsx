@@ -5,8 +5,10 @@ import {
   upperCaseLetters,
   specialCharecters,
 } from "./Charecter";
-// import { toast, ToastContainer } from "react-toastify";
-//React-Toastify is one of the top React toast libraries available. This tool allows you to add toast notifications to your application with ease and can also be used to set notifications and alerts.
+
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+//React-Toastify is one of the top React toast libraries available. This tool allows you to add toast notifications to your application with ease and can also be used to set notifications and notifys.
 export default function Generator() {
   const [password, setPassword] = React.useState("");
   const [passwordLength, setPasswordLength] = React.useState(12);
@@ -25,7 +27,7 @@ export default function Generator() {
       !includeNumbers &&
       !includeSymbols
     ) {
-      alert("To Generate Password you must select atleast one checkbox");
+      notify("To Generate Password you must select atleast one checkbox");
     } else {
       let characterList = "";
       if (includeLowerCase) {
@@ -41,7 +43,7 @@ export default function Generator() {
         characterList = characterList + specialCharecters;
       }
       setPassword(createPassword(characterList));
-      alert("Password Generated Successfully");
+      notify("Password Generated Successfully");
     }
   };
 
@@ -61,12 +63,38 @@ export default function Generator() {
   };
   const handleCopyPassword = () => {
     if (password === "") {
-      alert(COPY_FAIL);
+      notify(COPY_FAIL);
     } else {
       copyToClipboard(password);
-      alert(COPY_SUCCESS);
+      notify(COPY_SUCCESS);
     }
   };
+  // ????????????????????????????
+  const notify = (message, hasError = false) => {
+    if (hasError) {
+      toast.error(message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    else {
+      toast(message, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+
+  }
 
   /* -------------------------------------------------------------------------- */
   return (
@@ -74,7 +102,10 @@ export default function Generator() {
       <h2>Password Generator</h2>
       <div className="pass-container">
         <h3 className="pass-box">{password}</h3>
-        <i className="icon fa-regular fa-clipboard" onClick={handleCopyPassword}></i>
+        <i
+          className="icon fa-regular fa-clipboard"
+          onClick={handleCopyPassword}
+        ></i>
       </div>
       <div className="form-container">
         <div className="form-group">
@@ -124,6 +155,18 @@ export default function Generator() {
       <button className="pass-generate-btn" onClick={handleGeneratePassword}>
         Generate Password
       </button>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }
