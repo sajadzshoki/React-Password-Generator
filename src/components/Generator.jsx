@@ -17,7 +17,7 @@ export default function Generator() {
   const [includeNumbers, setIncludeNumbers] = React.useState(false);
   const [includeSymbols, setIncludeSymbols] = React.useState(false);
   //massages
-  const COPY_SUCCESS = "password copied successfully to clipboard";
+  const COPY_SUCCESS = "password copied to clipboard";
   const COPY_FAIL = "password didn't copied successfully";
 
   const handleGeneratePassword = () => {
@@ -27,7 +27,7 @@ export default function Generator() {
       !includeNumbers &&
       !includeSymbols
     ) {
-      notify("To Generate Password you must select atleast one checkbox");
+      notify("To Generate Password you must select atleast one checkbox",true);
     } else {
       let characterList = "";
       if (includeLowerCase) {
@@ -43,7 +43,7 @@ export default function Generator() {
         characterList = characterList + specialCharecters;
       }
       setPassword(createPassword(characterList));
-      notify("Password Generated Successfully");
+      notify("Password Generated Successfully" , false);
     }
   };
 
@@ -85,7 +85,7 @@ export default function Generator() {
     else {
       toast(message, {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -95,7 +95,6 @@ export default function Generator() {
     }
 
   }
-
   /* -------------------------------------------------------------------------- */
   return (
     <div className="container">
@@ -105,7 +104,7 @@ export default function Generator() {
         <i
           className="icon fa-regular fa-clipboard"
           onClick={handleCopyPassword}
-        ></i>
+        >copy</i>
       </div>
       <div className="form-container">
         <div className="form-group">
@@ -136,7 +135,7 @@ export default function Generator() {
           />
         </div>
         <div className="form-group">
-          <label>Include Number</label>
+          <label>Include Numbers</label>
           <input
             type="checkbox"
             checked={includeNumbers}
@@ -155,18 +154,17 @@ export default function Generator() {
       <button className="pass-generate-btn" onClick={handleGeneratePassword}>
         Generate Password
       </button>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
     </div>
   );
 }

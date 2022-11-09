@@ -1,64 +1,78 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-image: linear-gradient(to top, #209cff 100%, #68e0cf 200%);
 }
 
 
 .container {
-  margin: auto;
+  margin: 15rem auto;
   display: flex;
   flex-direction: column;
   width: 300px;
   justify-content: center;
   align-items: center;
-  background-color: rgba(127, 255, 212, 0.689);
+ 
+  background: #11174b;
   padding: 0.5rem;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.548);
+  border-radius: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.45), 0 4px 8px rgba(0, 0, 0, 0.35), 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
-
+h2{
+  color: white;
+  font-size: 1.6rem;
+}
 .form-group {
   display: flex;
   justify-content: space-between;
   margin: 1rem 0rem;
+  color: white;
 }
 
 .pass-container {
   position: relative;
 }
+
 .icon {
   position: absolute;
-  top: 35px;
+  top: 26px;
   right: 15px;
   cursor: pointer;
-  font-size: 1.2rem;
+  color: white;
 }
-
+.icon:hover{
+  color: #209cff;
+}
 .pass-box {
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.1);
   padding: 1rem;
   width: 250px;
   height: 20px;
   border-radius: 10px;
   font-weight: 300;
+  color: white;
+  font-size: 0.8rem;
+  
 }
 
 .pass-generate-btn {
-  width: 200px;
+  width: 250px;
   height: 45px;
   border: none;
-  border-radius: 15px;
-  background-color: blue;
-  color: white;
+  border-radius: 10px;
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: rgb(255, 255, 255);
   cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 20px;
+  transition: 0.3s ease-in-out;
+  
 
+}
+
+.pass-generate-btn:hover {
+  font-size: 1.2rem;
+  
+  
 }
