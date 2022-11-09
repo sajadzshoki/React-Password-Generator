@@ -1,0 +1,52 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+.container{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  background-color:rgba(127, 255, 212, 0.689);
+  padding: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.548);
+}
+
+
+.form-group{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0rem;
+}
+.pass-box{
+  background-color: rgb(255, 255, 255);
+  padding: 1rem;
+  width: 250px;
+  height: 20px;
+  border-radius: 10px;
+  font-weight: 300;
+}
+
+.pass-generate-btn{
+  width: 200px;
+  height: 45px;
+  border: none;
+  border-radius: 15px;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+
+}
