@@ -10,13 +10,13 @@ import {
 export default function Generator() {
   const [password, setPassword] = React.useState("");
   const [passwordLength, setPasswordLength] = React.useState(12);
-  const [includeLowerCase, setIncludeLowerCase] = React.useState(false);
+  const [includeLowerCase, setIncludeLowerCase] = React.useState(true);
   const [includeUpperCase, setIncludeUpperCase] = React.useState(false);
   const [includeNumbers, setIncludeNumbers] = React.useState(false);
   const [includeSymbols, setIncludeSymbols] = React.useState(false);
   //massages
-  // const COPY_SUCCESS = "password copied successfully to clipboard"
-  // const COPY_FAIL = "password copied successfully to clipboard"
+  const COPY_SUCCESS = "password copied successfully to clipboard";
+  const COPY_FAIL = "password didn't copied successfully";
 
   const handleGeneratePassword = () => {
     if (
@@ -55,10 +55,27 @@ export default function Generator() {
     }
     return password;
   };
+
+  const copyToClipboard = (password) => {
+    navigator.clipboard.writeText(password);
+  };
+  const handleCopyPassword = () => {
+    if (password === "") {
+      alert(COPY_FAIL);
+    } else {
+      copyToClipboard(password);
+      alert(COPY_SUCCESS);
+    }
+  };
+
+  /* -------------------------------------------------------------------------- */
   return (
     <div className="container">
       <h2>Password Generator</h2>
-      <h3 className="pass-box">{password}</h3>
+      <div className="pass-container">
+        <h3 className="pass-box">{password}</h3>
+        <i className="icon fa-regular fa-clipboard" onClick={handleCopyPassword}></i>
+      </div>
       <div className="form-container">
         <div className="form-group">
           <label>Password length</label>
